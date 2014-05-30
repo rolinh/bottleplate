@@ -110,6 +110,11 @@ Some tasks are already defined in the `tasks.py` file.
 * `check` run both the `pep8` and `pyflakes` tasks.
 * `clean`: clean any python generated files and folders.
 * `clean_env`: run the `clean` tasks and reinitializes the python environment.
+* `rename`: this is supposed to be used only once. It rename the `bottleplate`
+  directory and replaces `bottleplate` and `Bottleplate` names in python sources
+  where appropriate. If you provide a name like this one: `my awesome app`,
+  occurences of `bottleplate` will be replaced by `myawesomeapp` and occurences
+  of `Bottleplate` by `MyAwesomeApp`.
 
 ## SETTING THE WHOLE THING
 
