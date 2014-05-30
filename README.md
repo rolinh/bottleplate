@@ -148,3 +148,8 @@ For instance, if you use `postgresql`, you need `psycopg2`.
 To use the migration, you also need to provide the appropriate database URL in
 the `alembic.ini` file. Have a look at
 [alembic documentation](http://alembic.readthedocs.org/) for more information.
+
+Once all of this is setup, you can rename the template using this command:
+`invoke rename --name='my awesome app name'`.
+Of course, replace the name by the appropriate one. You may want to remove the
+template under views if you are creating an API server.
