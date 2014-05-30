@@ -1,0 +1,18 @@
+# general patterns
+*.cache
+*.directory
+*.pyc
+*.swp
+env/*
+!env/.keep
+bottleplate/log/*
+!bottleplate/log/.keep
+
+# files
+alembic.ini
+bottleplate/config/settings.py
+bottleplate/db/dev.db
+bottleplate/db/bottleplate.db
+
+# folders
+__pycache__
