@@ -158,3 +158,12 @@ Once all of this is setup, you can rename the template using this command:
 `invoke rename --name='my awesome app name'`.
 Of course, replace the name by the appropriate one. You may want to remove the
 template under views if you are creating an API server.
+
+## RUN IT
+
+Considering all has been setup, you can run your application using this command:
+
+    python run.py
+
+You can now navigate to `http://localhost:8080` (considering you haven't changed
+the default port) and see a sample home page.
