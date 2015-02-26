@@ -28,22 +28,22 @@ def set_settings(environment='production', nosetests=''):
     print('Done')
 
 
-@task('set_settings')
+@task(set_settings)
 def test_func(environment='test', nosetests='nosetests'):
     run_cmd(nosetests + ' -w ' + func_test_dir)
 
 
-@task('set_settings')
+@task(set_settings)
 def test_unit(environment='test', nosetests='nosetests'):
     run_cmd(nosetests + ' -w ' + unit_test_dir)
 
 
-@task('set_settings', 'test_func', 'test_unit')
+@task(set_settings, test_func, test_unit)
 def test(environment='test', nosetests='nosetests'):
     pass
 
 
-@task('set_settings')
+@task(set_settings)
 def setup():
     src = 'alembic.ini.sample'
     dst = 'alembic.ini'
@@ -65,7 +65,7 @@ def pyflakes():
     run_cmd(cmd)
 
 
-@task('pep8', 'pyflakes')
+@task(pep8, pyflakes)
 def check():
     pass
 
@@ -79,7 +79,7 @@ def clean():
     run_cmd("find . -name '._*' -exec rm -f {} +")
 
 
-@task('clean')
+@task(clean)
 def clean_env():
     run_cmd('rm -r ./env && mkdir env && touch env/.keep')
 
