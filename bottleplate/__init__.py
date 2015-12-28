@@ -1,11 +1,11 @@
-__version__ = '0.1.0'
-
 import bottle
 from bottle.ext import sqlalchemy
 from sqlalchemy import create_engine
 
 from bottleplate.app.models import Base
 from bottleplate.config import routes
+
+__version__ = '0.1.0'
 
 
 class Bottleplate:
