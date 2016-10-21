@@ -1,7 +1,7 @@
 from shutil import copy
 import sys
 
-from invoke import task
+from invoke import task, call
 
 # define projects directories
 app_dir = 'bottleplate'
@@ -15,8 +15,8 @@ def dev(ctx):
     """Run the application (use when developing)."""
     ctx.run("python run.py")
 
-@task
-def set_settings(ctx, environment='production', nosetests=''):
+@task(help={'environment': "One of 'production', 'development' or 'test'."})
+def set_settings(ctx, environment='production'):
     """Copy the default configuration file from the template."""
     if environment not in ['production', 'development', 'test']:
         print('Error: ' + environment + ' is not a valid parameter',
@@ -40,20 +40,20 @@ def setup(ctx):
     print('Done')
 
 
-@task(set_settings)
-def test_func(ctx, environment='test', nosetests='nosetests'):
+@task(pre=[call(set_settings, environment='test')])
+def test_func(ctx):
     """Run the functional tests."""
-    ctx.run(nosetests + ' -w ' + func_test_dir)
+    ctx.run('nosetests -w ' + func_test_dir)
 
 
-@task(set_settings)
-def test_unit(ctx, environment='test', nosetests='nosetests'):
+@task(pre=[call(set_settings, environment='test')])
+def test_unit(ctx):
     """Run the unit tests."""
-    ctx.run(nosetests + ' -w ' + unit_test_dir)
+    ctx.run('nosetests -w ' + unit_test_dir)
 
 
-@task(set_settings, test_func, test_unit)
-def test(ctx, environment='test', nosetests='nosetests'):
+@task(test_func, test_unit)
+def test(ctx):
     """Run the tests (functional and unit)."""
     pass
 
@@ -62,15 +62,13 @@ def test(ctx, environment='test', nosetests='nosetests'):
 def pep8(ctx):
     """Check source code compliance to PEP8."""
     # ignore versions folder since migration scripts are auto-generated
-    cmd = 'pep8 --exclude=app/db/versions/* run.py tasks.py ' + app_dir
-    ctx.run(cmd)
+    ctx.run('pep8 --exclude=app/db/versions/* run.py tasks.py ' + app_dir)
 
 
 @task
 def pyflakes(ctx):
     """Check source code for errors."""
-    cmd = 'pyflakes run.py tasks.py ' + app_dir
-    ctx.run(cmd)
+    ctx.run('pyflakes run.py tasks.py ' + app_dir)
 
 
 @task(pep8, pyflakes)
@@ -95,7 +93,7 @@ def clean_env(ctx):
     ctx.run('rm -r ./env && mkdir env && touch env/.keep')
 
 
-@task
+@task(help={'name': "A new name for your awesome app."})
 def rename(ctx, name=None):
     """
     Rename the 'bottleplate' application to whichever name of your
