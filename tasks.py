@@ -10,10 +10,12 @@ test_dir = app_dir + '/test'
 func_test_dir = test_dir + '/functional'
 unit_test_dir = test_dir + '/unit'
 
+
 @task
 def dev(ctx):
     """Run the application (use when developing)."""
     ctx.run("python run.py")
+
 
 @task(help={'environment': "One of 'production', 'development' or 'test'."})
 def set_settings(ctx, environment='production'):
