@@ -100,7 +100,7 @@ Some tasks are already defined in the `tasks.py` file.
   test`.
   Example:
   `invoke set_settings --environment=production`
-* `run`: run the application.
+* `dev`: run the application.
 * `test_func`: run the functional tests.
 * `test_unit`: run the unit tests.
 * `test`: run both the functional and unit tests.
