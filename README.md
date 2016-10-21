@@ -100,11 +100,11 @@ Some tasks are already defined in the `tasks.py` file.
   test`.
   Example:
   `invoke set_settings --environment=production`
+* `run`: run the application.
 * `test_func`: run the functional tests.
 * `test_unit`: run the unit tests.
 * `test`: run both the functional and unit tests.
-* `setup`: copy the setting files and alembic sample files from their
-  templates.
+* `setup`: copy the setting files and alembic sample files from their templates.
 * `pep8`: check source code compliance to PEP8.
 * `pyflakes`: check source code for errors.
 * `check` run both the `pep8` and `pyflakes` tasks.
@@ -164,6 +164,10 @@ template under views if you are creating an API server.
 Considering all has been setup, you can run your application using this command:
 
     python run.py
+
+Or using `invoke`:
+
+    invoke dev
 
 You can now navigate to `http://localhost:8080` (considering you haven't changed
 the default port) and see a sample home page.
