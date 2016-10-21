@@ -1,5 +1,5 @@
 alembic>=0.8.6
 bottle>=0.12.9
 bottle-sqlalchemy>=0.4.3
-invoke>=0.12.2
+invoke>=0.13.0
 SQLAlchemy>=1.0.12
