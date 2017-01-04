@@ -38,8 +38,7 @@ assumes some choices such as:
 * [WebTest](http://webtest.readthedocs.org/) for functional testing
 * [pep8](http://pep8.readthedocs.org/) to check source code conformance to pep8
   style conventions
-* [pyflakes](https://launchpad.net/pyflakes) to scan python source code for
-  errors
+* [flake8](http://flake8.pycqa.org) to scan python source code for errors
 
 Of course, nothing is written into stone and you can adapt the template to your
 needs.
@@ -106,8 +105,8 @@ Some tasks are already defined in the `tasks.py` file.
 * `test`: run both the functional and unit tests.
 * `setup`: copy the setting files and alembic sample files from their templates.
 * `pep8`: check source code compliance to PEP8.
-* `pyflakes`: check source code for errors.
-* `check` run both the `pep8` and `pyflakes` tasks.
+* `flake8`: check source code for errors.
+* `check` run both the `pep8` and `flake8` tasks.
 * `clean`: clean any python generated files and folders.
 * `clean_env`: run the `clean` tasks and reinitializes the python environment.
 * `rename`: this is supposed to be used only once. It rename the `bottleplate`

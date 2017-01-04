@@ -68,14 +68,14 @@ def pep8(ctx):
 
 
 @task
-def pyflakes(ctx):
+def flake8(ctx):
     """Check source code for errors."""
-    ctx.run('pyflakes run.py tasks.py ' + app_dir)
+    ctx.run('flake8 run.py tasks.py ' + app_dir)
 
 
-@task(pep8, pyflakes)
+@task(pep8, flake8)
 def check(ctx):
-    """Run the pep8 and pyflakes tasks."""
+    """Run the pep8 and flake8 tasks."""
     pass
 
 
