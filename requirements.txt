@@ -1,5 +1,5 @@
-alembic>=0.8.10
+alembic>=0.9.1
 bottle>=0.12.13
 bottle-sqlalchemy>=0.4.3
-invoke>=0.14.0
-sqlalchemy>=1.1.5
+invoke>=0.17.0
+sqlalchemy>=1.1.9
